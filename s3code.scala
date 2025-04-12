@@ -29,9 +29,9 @@ object s3 {
 			
 			val s3df  = spark.read.format("parquet").load("s3://datastreamcorp/src")
 
-val aggdf = s3df.groupBy("username").agg(sum("amount").cast(IntegerType).as("total"))
+			val aggdf = s3df.groupBy("username").agg(sum("amount").cast(IntegerType).as("total"))
 
- aggdf.write.format("parquet").mode("overwrite").save("s3://datastreamcorp/dest/total_amount_data")
+			aggdf.write.format("parquet").mode("overwrite").save("s3://datastreamcorp/dest/total_amount_data")
 
 	}
   
