@@ -99,7 +99,7 @@ This project demonstrates a fully automated data pipeline using **Apache Spark o
 ### File Structure
 
 ```text
-s3://zeyoauto/
+s3://datastreamcorp/
 │
 ├── src/                           <- Raw input for S3 job
 ├── dest/
