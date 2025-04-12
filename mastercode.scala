@@ -28,16 +28,16 @@ object master {
 
 			val  df1 = spark.read.format("parquet").load("s3://datastreamcorp/dest/sitecount")
 
-val  df2 = spark.read.format("parquet").load("s3://datastreamcorp/dest/total_amount_data")
-
-val  df3 = spark.read.format("parquet").load("s3://datastreamcorp/dest/customer_api")
-
-val rm=df3.withColumn("username",regexp_replace(col("username"),  "([0-9])", ""))
-
-val finaljoin = rm.join(df1,Seq("username"),"left").join(df2,Seq("username"),"left")
-
-finaljoin.drop("cnt").write.format("parquet").mode("overwrite").save("s3://datastreamcorp/dest/finalcustomer")
-	
+			val  df2 = spark.read.format("parquet").load("s3://datastreamcorp/dest/total_amount_data")
+			
+			val  df3 = spark.read.format("parquet").load("s3://datastreamcorp/dest/customer_api")
+			
+			val rm=df3.withColumn("username",regexp_replace(col("username"),  "([0-9])", ""))
+			
+			val finaljoin = rm.join(df1,Seq("username"),"left").join(df2,Seq("username"),"left")
+			
+			finaljoin.drop("cnt").write.format("parquet").mode("overwrite").save("s3://datastreamcorp/dest/finalcustomer")
+				
 			
 
 	}
