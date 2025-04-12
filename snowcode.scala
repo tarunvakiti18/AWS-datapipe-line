@@ -27,7 +27,20 @@ object snow {
 
 
 
-			val snowdf = spark.read.format("snowflake").option("sfURL","https://hgffczj-aj09505.snowflakecomputing.com").option("sfAccount","hgffczj").option("sfUser","sivavasusaia").option("sfPassword","Aditya908").option("sfDatabase","zeyodb").option("sfSchema","zeyoschema").option("sfRole","ACCOUNTADMIN").option("sfWarehouse","COMPUTE_WH").option("dbtable","srctab").load()
+			import sys.env
+
+			val snowdf = spark.read
+			  .format("snowflake")
+			  .option("sfURL", sys.env("SF_URL"))
+			  .option("sfAccount", sys.env("SF_ACCOUNT"))
+			  .option("sfUser", sys.env("SF_USER"))
+			  .option("sfPassword", sys.env("SF_PASSWORD"))
+			  .option("sfDatabase", sys.env("SF_DATABASE"))
+			  .option("sfSchema", sys.env("SF_SCHEMA"))
+			  .option("sfRole", sys.env("SF_ROLE"))
+			  .option("sfWarehouse", sys.env("SF_WAREHOUSE"))
+			  .option("dbtable", sys.env("SF_DBTABLE"))
+			  .load()
 
 
 			val aggdf = snowdf.groupBy("username").agg(count("site").as("cnt"))
