@@ -36,7 +36,7 @@ This project demonstrates a fully automated data pipeline using **Apache Spark o
 | S3 Source (amount totals)   | `s3://datastreamcorp/dest/total_amount_data`      |
 | Web API (flattened JSON)    | `s3://datastreamcorp/dest/customer_api`           |
 | **Final Joined Data**       | `s3://datastreamcorp/dest/finalcustomer`          |
-| JAR Backups                 | `s3://datastreamcorp/ipldir/`                     |
+| JAR Backups                 | `s3://datastreamcorp/dir/`                        |
 
 ---
 
@@ -108,7 +108,7 @@ s3://datastreamcorp/
 │   ├── customer_api/            <- Output of Web API extraction
 │   ├── finalcustomer/           <- Final output (master job result)
 │
-└── ipldir/                       <- For backup JAR files
+└── dir/                       <- For backup JAR files
      ├── snow.jar
      ├── s3.jar
      ├── api.jar
