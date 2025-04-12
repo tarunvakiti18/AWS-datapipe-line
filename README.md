@@ -8,7 +8,7 @@ This project demonstrates a fully automated data pipeline using **Apache Spark o
 
 ## 🛠️ Technologies Used
 
-- Apache Spark (Scala / PySpark)
+- Apache Spark (Scala)
 - AWS EMR (Elastic MapReduce)
 - Amazon S3
 - Snowflake
